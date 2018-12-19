@@ -18,8 +18,8 @@ git checkout r1.12 (using r1.12 instead of r1.13 )
 ```
 ## 2.  Check your Bazel version
 
-Bazel **MUST BE 0.18 and not HIGHER** , I tried 0.20 and failed and so have to undo and reinstall bazel.
-Uninstall other bazel version if another is already installed (check with **bazel version**)
+Bazel **MUST BE 0.18 and not HIGHER or LOWER** , I tried 0.20 and failed and so have to undo and reinstall bazel.
+Uninstall if another bazel version is already installed (check with **bazel version**)
 ```
 ***Use the binary installer method***
 go to https://github.com/bazelbuild/bazel/tags and download the bazel-0.18.0-installer-linux-x86_64.sh
@@ -101,8 +101,9 @@ My gcc version is (Ubuntu 7.3.0-27ubuntu1~18.04) **7.3.0** works well
 
 ## 3.  Do the build 
 
-### a.   Start the bazel build [from your tensorflow directory, for me this is from /home/xxxx/tensorflow]
+### a.   Start the bazel build 
 
+From your tensorflow directory, for me this is from /home/xxxx/tensorflow
 If you start from the wrong place, you go no where =)
 ```
 bazel build --config=opt --config=cuda //tensorflow/tools/pip_package:build_pip_package
@@ -147,7 +148,7 @@ from the tensorflow directory [/home/xxxx/tensorflow]
 ```
 pip3 install ./tensorflow_pkg/tensorflow-1.12.0-cp36-cp36m-linux_x86_64.whl
 ```
-## 4. Test the build
+## 4. Test the build - Moment of Truth
 
 Create a python file - test-tf.py
 ```
@@ -176,4 +177,4 @@ totalMemory: 1.96GiB freeMemory: 1.83GiB
 2018-12-19 18:24:11.943211: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1001] 0:   N 
 2018-12-19 18:24:11.943363: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 1587 MB memory) -> physical GPU (device: 0, name: GeForce 940MX, pci bus id: 0000:01:00.0, compute capability: 5.0)
 ```
-We are good to go! Somehow ( pyschologically ) I found the output appearing pretty fast than the standard pip3 install tensorflow.  
+We are good to go! Somehow ( pyschologically ) I found the output appearing pretty fast than the standard pip3 install tensorflow. Now with this documentation, when tensorflow 1.13 is stable and when 2.0 comes out in 2019, I have a reference to rebuild Tensorflow to suit my flavour of hardware and software combination. 
