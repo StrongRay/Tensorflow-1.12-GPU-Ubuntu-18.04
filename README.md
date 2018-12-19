@@ -1,7 +1,7 @@
 # Tensorflow-1.12-GPU-Ubuntu-18.04
-Building Tensorflow 1.12 with GPU from scratch
+Building Tensorflow 1.12 with GPU from scratch Reference: https://www.tensorflow.org/install/source
 
-Why this is needed:  Not every hardware is the same, some will have GPU, some have different CUDA versions, etc.  Building from scratch helps cater to your specific hardware especially your combination of versions of python, CUDA, CUDNN and NCCL   And this helps to fine tune your UNIX skills to “debug” where one has gone wrong and how to search for solutions off the internet. 
+Not every hardware is the same, some will have GPU, some have different CUDA versions, etc.  Building from scratch helps you cater to your specific hardware especially for your combination of versions of python, CUDA, CUDNN and NCCL   And this helps to fine tune your UNIX skills to “debug” where one has gone wrong and how to search for solutions off the internet. 
 
 ## 1.  Get the Tensorflow source codes
 
@@ -78,24 +78,25 @@ My gcc version is (Ubuntu 7.3.0-27ubuntu1~18.04) **7.3.0** works well
     Do you wish to build TensorFlow with VERBS support? [y/N]: N
     Do you wish to build TensorFlow with OpenCL SYCL support? [y/N]: N
     Do you wish to build TensorFlow with CUDA support? [y/N]: Y
-    Please specify the CUDA SDK version you want to use, e.g. 7.0. [Leave empty to default to CUDA 9.0]: 9.2
+    Please specify the CUDA SDK version you want to use, e.g. 7.0. [Leave empty to default to CUDA 9.0]: **9.2**
     Please specify the location where CUDA 9.2 toolkit is installed. Refer to README.md for more details. [Default is /usr/local/cuda]: /usr/local/cuda
-    Please specify the cuDNN version you want to use. [Leave empty to default to cuDNN 7.0]: 7.2.1
+    Please specify the cuDNN version you want to use. [Leave empty to default to cuDNN 7.0]: **7.2.1**
     Please specify the location where cuDNN 7.2.1 library is installed. Refer to README.md for more details. [Default is /usr/local/cuda]:/usr/lib/x86_64-linux-gnu
     Please note that each additional compute capability significantly increases your build time and binary size. [Default is: 6.1] 5.0
     Do you want to use clang as CUDA compiler? [y/N]: N
     Please specify which gcc should be used by nvcc as the host compiler. [Default is /usr/bin/gcc]: /usr/bin/gcc
     Do you wish to build TensorFlow with MPI support? [y/N]: N
+    Please specify the NCCL version you want to use. If NCLL 2.2 is not installed, then you can use version 1.3 that can be fetched automatically but it may have worse performance with multiple GPUs. [Default is 2.2]: **2.2.1**
     Please specify optimization flags to use during compilation when bazel option "--config=opt" is specified [Default is -march=native]: -march=native
     If you would like to use a local MKL instead of downloading, please set the environment variable "TF_MKL_ROOT" every time before build.
     Would you like to interactively configure ./WORKSPACE for Android builds? [y/N]: N
 
-    Configuration finished [there was an NCCL question asked but I did not capture it here.. ]
+    Configuration finished 
 
 
 ## 3.  Do the build 
 
-### a.   Start the bazel build [from your tensorflow directory .. for me was /home/kenghee/tensorflow
+### a.   Start the bazel build [from your tensorflow directory, for me this is /home/xxxx/tensorflow
 ```
 bazel build --config=opt --config=cuda //tensorflow/tools/pip_package:build_pip_package
 ```
@@ -168,4 +169,4 @@ totalMemory: 1.96GiB freeMemory: 1.83GiB
 2018-12-19 18:24:11.943211: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1001] 0:   N 
 2018-12-19 18:24:11.943363: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 1587 MB memory) -> physical GPU (device: 0, name: GeForce 940MX, pci bus id: 0000:01:00.0, compute capability: 5.0)
 ```
-We are good to go! Somehow this build appears faster than the standard pip3 install tensorflow.  
+We are good to go! Somehow ( pyschologically ) I found the output appearing pretty fast than the standard pip3 install tensorflow.  
