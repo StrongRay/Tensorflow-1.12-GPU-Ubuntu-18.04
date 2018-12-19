@@ -156,9 +156,7 @@ import tensorflow as tf
 
 print(tf.__version__)
 
-config = tf.ConfigProto()
-config.gpu_options.allow_growth = True  #  R2
-sess = tf.Session(config=config)
+sess = tf.Session()
 sess.run(tf.global_variables_initializer())
 
 sess.close()
