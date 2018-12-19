@@ -38,12 +38,12 @@ Build timestamp as int: 1541153388
 
 ## 3.  Verify a few stuff before starting the configure.
 
-a. Identify your python version  3.6 (add to ~/.bashrc - alias python=python3 )
-b. Make sure nvcc is installed ( use **nvcc –version** to verify )
-c. Check CUDA version 9.2  ( use nvcc –version )
-d. Check CUDNN version  7.2.1 ( **locate cudnn | grep “libcudnn.so” | tail -n1** ) 
-e. Check NCCL 2.2.1 ( **locate nccl | grep “libnccl.so” | tail -n1** )
-f. Check **nvidia-smi** to see your GPU is working well  
+a. Identify your python version  3.6 (add to ~/.bashrc - alias python=python3 )  
+b. Make sure nvcc is installed ( use **nvcc –version** to verify )  
+c. Check CUDA version 9.2  ( use nvcc –version )  
+d. Check CUDNN version  7.2.1 ( **locate cudnn | grep “libcudnn.so” | tail -n1** )   
+e. Check NCCL 2.2.1 ( **locate nccl | grep “libnccl.so” | tail -n1** )  
+f. Check **nvidia-smi** to see your GPU is working well 
 ```
 Wed Dec 19 18:54:19 2018       
 +-----------------------------------------------------------------------------+
