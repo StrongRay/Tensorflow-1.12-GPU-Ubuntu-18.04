@@ -3,6 +3,11 @@ Building Tensorflow 1.12 with GPU from scratch Reference: https://www.tensorflow
 
 Not every hardware is the same, some will have GPU, some have different CUDA versions, etc.  Building from scratch helps you cater to your specific hardware especially for your combination of versions of python, CUDA, CUDNN and NCCL   And this helps to fine tune your UNIX skills to “debug” where one has gone wrong and how to search for solutions off the internet. 
 
+Prerequisite is a sudo apt-get update, sudo apt-get upgrade 
+
+Check that if you have pip3 installed
+then pip3 install six, numpy, wheel, mock, keras_applications==1.0.6, keras_preprocessing==1.0.5
+
 ## 1.  Get the Tensorflow source codes
 
 and from your home directory
@@ -78,15 +83,15 @@ My gcc version is (Ubuntu 7.3.0-27ubuntu1~18.04) **7.3.0** works well
     Do you wish to build TensorFlow with VERBS support? [y/N]: N
     Do you wish to build TensorFlow with OpenCL SYCL support? [y/N]: N
     Do you wish to build TensorFlow with CUDA support? [y/N]: Y
-    Please specify the CUDA SDK version you want to use, e.g. 7.0. [Leave empty to default to CUDA 9.0]: **9.2**
+    Please specify the CUDA SDK version you want to use, e.g. 7.0. [Leave empty to default to CUDA 9.0]: 9.2
     Please specify the location where CUDA 9.2 toolkit is installed. Refer to README.md for more details. [Default is /usr/local/cuda]: /usr/local/cuda
-    Please specify the cuDNN version you want to use. [Leave empty to default to cuDNN 7.0]: **7.2.1**
+    Please specify the cuDNN version you want to use. [Leave empty to default to cuDNN 7.0]: 7.2.1
     Please specify the location where cuDNN 7.2.1 library is installed. Refer to README.md for more details. [Default is /usr/local/cuda]:/usr/lib/x86_64-linux-gnu
     Please note that each additional compute capability significantly increases your build time and binary size. [Default is: 6.1] 5.0
     Do you want to use clang as CUDA compiler? [y/N]: N
     Please specify which gcc should be used by nvcc as the host compiler. [Default is /usr/bin/gcc]: /usr/bin/gcc
     Do you wish to build TensorFlow with MPI support? [y/N]: N
-    Please specify the NCCL version you want to use. If NCLL 2.2 is not installed, then you can use version 1.3 that can be fetched automatically but it may have worse performance with multiple GPUs. [Default is 2.2]: **2.2.1**
+    Please specify the NCCL version you want to use. If NCLL 2.2 is not installed, then you can use version 1.3 that can be fetched automatically but it may have worse performance with multiple GPUs. [Default is 2.2]: 2.2.1
     Please specify optimization flags to use during compilation when bazel option "--config=opt" is specified [Default is -march=native]: -march=native
     If you would like to use a local MKL instead of downloading, please set the environment variable "TF_MKL_ROOT" every time before build.
     Would you like to interactively configure ./WORKSPACE for Android builds? [y/N]: N
@@ -96,7 +101,9 @@ My gcc version is (Ubuntu 7.3.0-27ubuntu1~18.04) **7.3.0** works well
 
 ## 3.  Do the build 
 
-### a.   Start the bazel build [from your tensorflow directory, for me this is /home/xxxx/tensorflow
+### a.   Start the bazel build [from your tensorflow directory, for me this is from /home/xxxx/tensorflow]
+
+If you start from the wrong place, you go no where =)
 ```
 bazel build --config=opt --config=cuda //tensorflow/tools/pip_package:build_pip_package
 ```
