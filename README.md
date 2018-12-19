@@ -38,11 +38,11 @@ Build timestamp as int: 1541153388
 
 ## 3.  Verify a few stuff before starting the configure.
 
-a. Identify your python version  3.6 (add to ~/.bashrc - alias python=python3 )  
+a. Identify your python version. My version **3.6** (add to ~/.bashrc - alias python=python3 )  
 b. Make sure nvcc is installed ( use **nvcc –version** to verify )  
-c. Check CUDA version 9.2  ( use nvcc –version )  
-d. Check CUDNN version  7.2.1 ( **locate cudnn | grep “libcudnn.so” | tail -n1** )   
-e. Check NCCL 2.2.1 ( **locate nccl | grep “libnccl.so” | tail -n1** )  
+c. Check CUDA version. My version **9.2**  ( use nvcc –version )  
+d. Check CUDNN version.  My version **7.2.1** ( **locate cudnn | grep “libcudnn.so” | tail -n1** )   
+e. Check NCCL version.  My version **2.2.1** ( **locate nccl | grep “libnccl.so” | tail -n1** )  
 f. Check **nvidia-smi** to see your GPU is working well 
 ```
 Wed Dec 19 18:54:19 2018       
@@ -64,7 +64,7 @@ Wed Dec 19 18:54:19 2018
 |    0     19048      C   /usr/lib/libreoffice/program/soffice.bin      20MiB |
 +-----------------------------------------------------------------------------+
 ```
-My gcc version is (Ubuntu 7.3.0-27ubuntu1~18.04) 7.3.0 works well
+My gcc version is (Ubuntu 7.3.0-27ubuntu1~18.04) **7.3.0** works well
 ```
 ./configure
 ```
