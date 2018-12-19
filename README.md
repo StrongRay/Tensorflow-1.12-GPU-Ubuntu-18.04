@@ -1,9 +1,9 @@
 # Tensorflow-1.12-GPU-Ubuntu-18.04
-Building Tensorflow 1.12 with GPU from scratch - Reference: https://www.tensorflow.org/install/source
+This is a guide for building Tensorflow 1.12 with GPU from scratch - Reference: https://www.tensorflow.org/install/source
 
-Not every hardware is the same, some will have GPU, some have different CUDA versions, etc.  Building from scratch helps you cater to your specific hardware especially for your combination of versions of python, CUDA, CUDNN and NCCL   And this helps to fine tune your UNIX skills to “debug” where one has gone wrong and how to search for solutions off the internet. 
+Not every hardware is the same, some will have GPU, some have different CUDA versions, etc.  Building from scratch helps you cater to your specific hardware especially for your combination of versions of python, CUDA, CUDNN and NCCL   And this helps to hone your UNIX skills to “debug” where one has gone wrong and how to search for relevant solutions off the internet. 
 
-The official documentation never say cannot use latest BAZEL version, but I discovered version 0.18 works. But it's a costly affair to know after 4 hours that your bazel build fails. Hence, I create this documentation.
+The official documentation never say cannot use latest BAZEL version, but I discovered version 0.18 works. It's a costly affair to know after 4 hours of bazelling that your bazel build fails.  Hence, I create this documentation.
 
 Prerequisite before any installation stuff is ALWAYS a **sudo apt-get update** followed by a **sudo apt-get upgrade** 
 
@@ -178,4 +178,4 @@ totalMemory: 1.96GiB freeMemory: 1.83GiB
 2018-12-19 18:24:11.943211: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1001] 0:   N 
 2018-12-19 18:24:11.943363: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 1587 MB memory) -> physical GPU (device: 0, name: GeForce 940MX, pci bus id: 0000:01:00.0, compute capability: 5.0)
 ```
-We are good to go!Now with this documentation and when tensorflow 1.13 is stable or when 2.0 comes out in 2019, I have a reference to rebuild Tensorflow to suit my flavour of hardware and software combination. 
+We are good to go! Now with this documentation and when tensorflow 1.13 is stable or when 2.0 comes out in 2019, I have a reference to rebuild Tensorflow to suit my flavour of hardware and software combination. 
