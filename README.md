@@ -107,7 +107,7 @@ My gcc version is (Ubuntu 7.3.0-27ubuntu1~18.04) **7.3.0** works well
 ### a.   Start the bazel build 
 
 From your tensorflow directory, for me this is from /home/xxxx/tensorflow
-If you start from the wrong place, you go no where =)
+If you start from the wrong place, you go no where =) NO KIDDING
 ```
 bazel build --config=opt --config=cuda //tensorflow/tools/pip_package:build_pip_package
 ```
