@@ -3,9 +3,11 @@ Building Tensorflow 1.12 with GPU from scratch - Reference: https://www.tensorfl
 
 Not every hardware is the same, some will have GPU, some have different CUDA versions, etc.  Building from scratch helps you cater to your specific hardware especially for your combination of versions of python, CUDA, CUDNN and NCCL   And this helps to fine tune your UNIX skills to “debug” where one has gone wrong and how to search for solutions off the internet. 
 
+The official documentation never say cannot use latest BAZEL version, but I discovered version 0.18 works. But it's a costly affair to know after 4 hours that your bazel build fails. Hence, I create this documentation.
+
 Prerequisite before any installation stuff is ALWAYS a **sudo apt-get update** followed by a **sudo apt-get upgrade** 
 
-Check that if you have pip3 installed
+Check that if you have pip3 installed (always go for python 3, python 2.7 is going away sooner or later)
 then pip3 install six, numpy, wheel, mock, keras_applications==1.0.6, keras_preprocessing==1.0.5
 
 ## 1.  Get the Tensorflow source codes
@@ -40,6 +42,7 @@ Build time: Fri Nov 2 10:09:48 2018 (1541153388)
 Build timestamp: 1541153388
 Build timestamp as int: 1541153388
 ```
+add the following line **export PATH="$PATH:$HOME/bin"** to ~/.bashrc
 
 ## 3.  Verify a few stuff before starting the configure.
 
