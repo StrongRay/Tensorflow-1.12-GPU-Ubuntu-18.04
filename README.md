@@ -42,7 +42,7 @@ Build time: Fri Nov 2 10:09:48 2018 (1541153388)
 Build timestamp: 1541153388
 Build timestamp as int: 1541153388
 ```
-add the following line **export PATH="$PATH:$HOME/bin"** to ~/.bashrc
+add the following line **export PATH="$PATH:$HOME/bin"** to ~/.bashrc (if you miss out the --user in the bazel installation, it goes to /usr/bin/bazel for everyone )
 
 ## 3.  Verify a few stuff before starting the configure.
 
@@ -178,4 +178,4 @@ totalMemory: 1.96GiB freeMemory: 1.83GiB
 2018-12-19 18:24:11.943211: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1001] 0:   N 
 2018-12-19 18:24:11.943363: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 1587 MB memory) -> physical GPU (device: 0, name: GeForce 940MX, pci bus id: 0000:01:00.0, compute capability: 5.0)
 ```
-We are good to go! Now with this documentation and when tensorflow 1.13 is stable or when 2.0 comes out in 2019, I have a reference to rebuild Tensorflow to suit my flavour of hardware and software combination. 
+We are good to go! Now with this documentation and when tensorflow 1.13 is stable or when 2.0 comes out in 2019, I have a reference to rebuild Tensorflow to suit my flavour of hardware and software combination. Ubuntu 18.04 is always better than Ubuntu 16.04.  And with new releases comes new issues that are not well tested.  But newer features are always in the latest version.  So, to upkeep, one can easily do a **pip3 install tensorflow-gpu**  But this is not the point.  The point is Deep Learning is not solely a .predict affair.  Integration with other stuff matters and knowing how LD_LIBRARY affects the location and discovery of .so files can either waste alot of your time or you can learn it earlier with more **practice** 
