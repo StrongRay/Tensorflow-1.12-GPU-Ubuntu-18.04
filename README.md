@@ -43,7 +43,7 @@ b. Make sure nvcc is installed ( use **nvcc –version** to verify )
 c. Check CUDA version. My version **9.2**  ( use nvcc –version )  
 d. Check CUDNN version.  My version **7.2.1** ( **locate cudnn | grep “libcudnn.so” | tail -n1** )   
 e. Check NCCL version.  My version **2.2.1** ( **locate nccl | grep “libnccl.so” | tail -n1** )  
-f. Check **nvidia-smi** to see your GPU is working well 
+f. Check **nvidia-smi** to see your GPU is working well since I am using NVIDIA GPU 
 ```
 Wed Dec 19 18:54:19 2018       
 +-----------------------------------------------------------------------------+
@@ -99,7 +99,7 @@ My gcc version is (Ubuntu 7.3.0-27ubuntu1~18.04) **7.3.0** works well
 ```
 bazel build --config=opt --config=cuda //tensorflow/tools/pip_package:build_pip_package
 ```
-Go for lunch .. and tea break , took me 4.13 hours on a Intel® Core™ i7-7500U CPU @ 2.70GHz × 4 , 12 GB memory laptop.
+Go for lunch and tea break , it took me **4.13 hours** on a Intel® Core™ i7-7500U CPU @ 2.70GHz × 4 , 12 GB memory laptop.
 ```
 Target //tensorflow/tools/pip_package:build_pip_package up-to-date:
   bazel-bin/tensorflow/tools/pip_package/build_pip_package
@@ -141,10 +141,8 @@ pip3 install ./tensorflow_pkg/tensorflow-1.12.0-cp36-cp36m-linux_x86_64.whl
 ```
 ## 4. Test the build
 
-Create a python file
+Create a python file - test-tf.py
 ```
-nano test-tf.py
-
 import tensorflow as tf
 
 print(tf.__version__)
