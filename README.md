@@ -3,7 +3,7 @@ Building Tensorflow 1.12 with GPU from scratch - Reference: https://www.tensorfl
 
 Not every hardware is the same, some will have GPU, some have different CUDA versions, etc.  Building from scratch helps you cater to your specific hardware especially for your combination of versions of python, CUDA, CUDNN and NCCL   And this helps to fine tune your UNIX skills to “debug” where one has gone wrong and how to search for solutions off the internet. 
 
-Prerequisite is a sudo apt-get update, sudo apt-get upgrade 
+Prerequisite before any installation stuff is ALWAYS a **sudo apt-get update** followed by a **sudo apt-get upgrade** 
 
 Check that if you have pip3 installed
 then pip3 install six, numpy, wheel, mock, keras_applications==1.0.6, keras_preprocessing==1.0.5
