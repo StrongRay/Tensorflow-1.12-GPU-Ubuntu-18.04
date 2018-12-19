@@ -1,7 +1,7 @@
 # Tensorflow-1.12-GPU-Ubuntu-18.04
 Building Tensorflow 1.12 with GPU from scratch
 
-Why this is needed:  Not every hardware is the same, some will have GPU, some have different CUDA versions, etc.  Building from scratch will cater to your specific hardware especially your combination of python 3.x and CUDA/CUDNN/NCCL version.  And make use of the exercise to “debug” where one gone wrong and how to search for solutions off the internet.    
+Why this is needed:  Not every hardware is the same, some will have GPU, some have different CUDA versions, etc.  Building from scratch helps cater to your specific hardware especially your combination of versions of python, CUDA, CUDNN and NCCL   And this helps to fine tune your UNIX skills to “debug” where one has gone wrong and how to search for solutions off the internet. 
 
 ## 1.  Get the Tensorflow source codes
 
@@ -9,15 +9,17 @@ and from your home directory
 ```
 git clone https://github.com/tensorflow/tensorflow.git  
 cd tensorflow
-git checkout r1.12 
+git checkout r1.12 (using r1.12 instead of r1.13 )
 ```
 ## 2.  Check your Bazel version
 
-Bazel **MUST BE 0.18 and not HIGHER** , uninstall other bazel version if found, test with a bazel version 
-
-use the binary installer method .. 
+Bazel **MUST BE 0.18 and not HIGHER** , I tried 0.20 and failed and so have to undo and reinstall bazel.
+Uninstall other bazel version if another is already installed (check with **bazel version**)
+```
+***Use the binary installer method***
 go to https://github.com/bazelbuild/bazel/tags and download the bazel-0.18.0-installer-linux-x86_64.sh
 the file will likely be downloaded to /home/xxxx/Downloads directory
+```
 
 ```bazel shutdown
 rm -fr ~/.bazel ~/.bazelrc ~/.cache/bazel
@@ -36,13 +38,13 @@ Build timestamp as int: 1541153388
 
 ## 3.  Verify a few stuff before starting the configure.
 
-a.  Identify your python version  3.6 .. add to ~/.bashrc alias python=python3, where python
-b.  Make sure nvcc is installed .. nvcc –version to verify
-c.  Check CUDA version 9.2  nvcc –version
-d.  Check CUDNN version  7.2.1 locate cudnn | grep “libcudnn.so” | tail -n1 
-e.  Check NCCL 2.2.1 locate nccl | grep “libnccl.so” | tail -n1
-f.  Check nvidia-smi to see your GPU is working well  
-
+a. Identify your python version  3.6 (add to ~/.bashrc - alias python=python3 )
+b. Make sure nvcc is installed ( use **nvcc –version** to verify )
+c. Check CUDA version 9.2  ( use nvcc –version )
+d. Check CUDNN version  7.2.1 ( **locate cudnn | grep “libcudnn.so” | tail -n1** ) 
+e. Check NCCL 2.2.1 ( **locate nccl | grep “libnccl.so” | tail -n1** )
+f. Check **nvidia-smi** to see your GPU is working well  
+```
 Wed Dec 19 18:54:19 2018       
 +-----------------------------------------------------------------------------+
 | NVIDIA-SMI 396.44                 Driver Version: 396.44                    |
@@ -61,11 +63,11 @@ Wed Dec 19 18:54:19 2018
 |    0      1743      G   /usr/lib/xorg/Xorg                           210MiB |
 |    0     19048      C   /usr/lib/libreoffice/program/soffice.bin      20MiB |
 +-----------------------------------------------------------------------------+
-
+```
 My gcc version is (Ubuntu 7.3.0-27ubuntu1~18.04) 7.3.0 works well
-
+```
 ./configure
-
+```
     Python library paths: /usr/bin/python3
     Do you wish to build TensorFlow with jemalloc as malloc support? [Y/n]: Y
     Do you wish to build TensorFlow with Google Cloud Platform support? [Y/n]: Y
@@ -94,22 +96,23 @@ My gcc version is (Ubuntu 7.3.0-27ubuntu1~18.04) 7.3.0 works well
 ## 3.  Do the build 
 
 ### a.   Start the bazel build [from your tensorflow directory .. for me was /home/kenghee/tensorflow
-
+```
 bazel build --config=opt --config=cuda //tensorflow/tools/pip_package:build_pip_package
-
+```
 Go for lunch .. and tea break , took me 4.13 hours on a Intel® Core™ i7-7500U CPU @ 2.70GHz × 4 , 12 GB memory laptop.
-
+```
 Target //tensorflow/tools/pip_package:build_pip_package up-to-date:
   bazel-bin/tensorflow/tools/pip_package/build_pip_package
 INFO: Elapsed time: 14898.186s, Critical Path: 249.87s
 INFO: 14074 processes: 14074 local.
 INFO: Build completed successfully, 17481 total actions
-
+```
 ### b.  Build the wheel file
-
+```
 ./bazel-bin/tensorflow/tools/pip_package/build_pip_package tensorflow_pkg
 pip3 install tensorflow_pkg/tensorflow*
-
+```
+```
 Wed Dec 19 18:19:17 +08 2018 : === Preparing sources in dir: /tmp/tmp.4VF8RATQrH
 ~/tensorflow ~/tensorflow
 ~/tensorflow
@@ -123,21 +126,23 @@ warning: no files found matching '*.h' under directory 'tensorflow/include/googl
 warning: no files found matching '*' under directory 'tensorflow/include/third_party'
 warning: no files found matching '*' under directory 'tensorflow/include/unsupported'
 Wed Dec 19 18:20:09 +08 2018 : === Output wheel file is in: /home/kenghee/tensorflow/tensorflow_pkg
-
+```
 ### c.  Install the WHEEL file
 
 Before installing make sure you remove any existing instance of Tensorflow 
-
-pip3 list  to see the list of modules installed
+```
+pip3 list  [checks the list of modules installed for python3 ]
 pip3 uninstall tensorflow
 pip3 uninstall tensorboard
-
+```
 from the tensorflow directory [/home/xxxx/tensorflow]
+```
 pip3 install ./tensorflow_pkg/tensorflow-1.12.0-cp36-cp36m-linux_x86_64.whl
-
+```
 ## 4. Test the build
 
 Create a python file
+```
 nano test-tf.py
 
 import tensorflow as tf
@@ -150,9 +155,9 @@ sess = tf.Session(config=config)
 sess.run(tf.global_variables_initializer())
 
 sess.close()
-
+```
 python test-tf.py
-
+```
 1.12.0
 2018-12-19 18:24:11.670236: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:964] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
 2018-12-19 18:24:11.670851: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1432] Found device 0 with properties: 
@@ -164,5 +169,5 @@ totalMemory: 1.96GiB freeMemory: 1.83GiB
 2018-12-19 18:24:11.943205: I tensorflow/core/common_runtime/gpu/gpu_device.cc:988]      0 
 2018-12-19 18:24:11.943211: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1001] 0:   N 
 2018-12-19 18:24:11.943363: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 1587 MB memory) -> physical GPU (device: 0, name: GeForce 940MX, pci bus id: 0000:01:00.0, compute capability: 5.0)
-
+```
 We are good to go! Somehow this build appears faster than the standard pip3 install tensorflow.  
