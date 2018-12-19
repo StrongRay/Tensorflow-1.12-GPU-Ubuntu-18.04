@@ -7,29 +7,28 @@ Why this is needed:  Not every hardware is the same, some will have GPU, some ha
 
 and from your home directory
 
-git clone https://github.com/tensorflow/tensorflow.git  this will create a tensorflow directory
+git clone https://github.com/tensorflow/tensorflow.git  <<--- this will create a tensorflow directory
 cd tensorflow
 git checkout r1.12 
 
 ## 2.  Check your Bazel version
 
-Bazel MUST BE 0.18 and not HIGHER , uninstall other bazel versions 
+Bazel **MUST BE 0.18 and not HIGHER** , uninstall other bazel version if found, test with a bazel version 
 
-[use the binary installer method .. 
+use the binary installer method .. 
 
-    go to https://github.com/bazelbuild/bazel/tags  and select the right version and .sh file
-    downloaded the bazel-0.18.0-installer-linux-x86_64.sh
-    bazel shutdown
-    rm -fr ~/.bazel ~/.bazelrc ~/.cache/bazel
-    Download the appropriate .sh to Downloads
-    cd Downloads
-    chmod +x bazel-0.18.0-installer-linux-x86_64.sh
-    ./bazel-0.18.0-installer-linux-x86_64.sh –user
-
-and install the 0.18 version from here https://docs.bazel.build/versions/master/install-ubuntu.html 
-
-bazel version
-
+go to https://github.com/bazelbuild/bazel/tags  and select the right version and .sh file
+downloaded the bazel-0.18.0-installer-linux-x86_64.sh
+```bazel shutdown
+rm -fr ~/.bazel ~/.bazelrc ~/.cache/bazel
+```
+download the appropriate .sh to Downloads
+```
+cd Downloads
+chmod +x bazel-0.18.0-installer-linux-x86_64.sh
+./bazel-0.18.0-installer-linux-x86_64.sh –user
+bazel version  
+```
 Build label: 0.18.1
 Build target: bazel-out/k8-opt/bin/src/main/java/com/google/devtools/build/lib/bazel/BazelServer_deploy.jar
 Build time: Fri Nov 2 10:09:48 2018 (1541153388)
